@@ -21,6 +21,7 @@ import { AvatarGenerator } from 'random-avatar-generator';
 import MobileMenu from './MobileMenu';
 import { DashboardNav } from './DashboardNav';
 import { DashboardSidebar } from './DashboardSidebar';
+import { Students } from './Students';
 const avatar = new AvatarGenerator();
 
 export const customers = [
@@ -213,7 +214,9 @@ export const ManageStudents = () => {
 
   return (
     <>
+    
     <DashboardNav/>
+    <Students/>
     <Typography variant="h4" sx={{padding:"20px"}}>STUDENTS</Typography>
     <Card>
   

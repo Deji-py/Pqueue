@@ -17,5 +17,8 @@
 
 :root{
     --primary:#00923F;
+    --primary-dim:hsl(146, 100%,10%);
     --secondary:#F8C300;
+    --blue: rgb(0, 152, 253);
+    --blue-dim: hsl(204, 100%, 35%);
 }

@@ -15,6 +15,7 @@
     "framer-motion": "^7.1.1",
     "js-priority-queue": "^0.1.5",
     "random-avatar-generator": "^2.0.0",
+    "random-color": "^1.0.1",
     "random-profile-generator": "^2.3.0",
     "react": "^18.2.0",
     "react-animated-slider": "^1.1.4",

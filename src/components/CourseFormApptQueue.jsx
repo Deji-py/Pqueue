@@ -54,13 +54,13 @@ const products = [
   },
 ];
 
-export const CourseFormAppt = (props) => (
+export const CourseFormAppt = ({title}) => (
    
 
-  <Card {...props} sx={{mt:"10px", borderRadius:'20px',background:"whitesmoke", boxShadow:"0px 2px 6px rgba(200,200,200, 0.5)"}}>
+  <Card sx={{mt:"10px", borderRadius:'20px',background:"whitesmoke", boxShadow:"0px 2px 6px rgba(200,200,200, 0.5)"}}>
     <CardHeader
       subtitle={`${products.length} in total`}
-      title="CourseForm Meeting"
+      title={title}
     />
     <Box className="flex__wrapper" sx={{width:"100%", padding:"10px"}}>
       <Button

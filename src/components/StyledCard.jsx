@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
-import { Avatar, Box, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
+import { Avatar, Box, Button, Card, CardActions, CardContent, Divider, Grid, Typography } from '@mui/material';
 import { Clock as ClockIcon } from '../icons/clock';
 import { Download as DownloadIcon } from '../icons/download';
+import { BiMessage } from 'react-icons/bi';
+import { AvatarGenerator } from 'random-avatar-generator';
+
+const randomavt = new AvatarGenerator()
 
 export const StyledCard = ({ product, ...rest }) => (
   <Card
@@ -22,8 +26,8 @@ export const StyledCard = ({ product, ...rest }) => (
       >
         <Avatar
           alt="Product"
-          src=''
-          variant="square"
+          src={randomavt.generateRandomAvatar()}
+          sx={{width:"100px",height:"100px"}}
         />
       </Box>
       <Typography
@@ -32,16 +36,36 @@ export const StyledCard = ({ product, ...rest }) => (
         gutterBottom
         variant="h5"
       >
-        Adeleke
+        Michael David
       </Typography>
       <Typography
         align="center"
         color="textPrimary"
         variant="body1"
       >
-        Nd2 student
+        <h4>Department</h4> Computer Science
       </Typography>
-    </CardContent>
+      <Typography
+        align="center"
+        color="textPrimary"
+        variant="body1"
+      >
+        <h4>Adviser-in-charge</h4> Mr Ogundele
+      </Typography>
+      <Typography
+        align="center"
+        color="textPrimary"
+        variant="body1"
+      >
+        <CardActions>
+        <Button variant="contained" disableElevation sx={{background:"var(--blue-dim)"}}>Profile</Button>
+        <Button variant="contained" disableElevation sx={{background:"var(--blue)"}}>Courses</Button>
+        <Button variant="contained" disableElevation endIcon={<BiMessage/>} sx={{background:"var(--primary-dim)", ":hover":{background:"var(--primary)"}}}>Message</Button>
+        </CardActions>
+      
+      </Typography>
+   
+      </CardContent>
     <Box sx={{ flexGrow: 1 }} />
     <Divider />
     <Box sx={{ p: 2 }}>

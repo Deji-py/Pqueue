@@ -45,11 +45,11 @@ function Admin({ toggle }) {
       <div className="box">
         <div className="appt">
           <div className="scroller">
-            <CourseFormAppt />
+            <CourseFormAppt title={"Course Form"} />
 
-            <CourseFormAppt />
+            <CourseFormAppt title={"Result Complaint"} />
 
-            <CourseFormAppt />
+            <CourseFormAppt title={"Other Meeting"}/>
           </div>
         </div>
         <AdminChart />
