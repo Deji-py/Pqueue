@@ -1,0 +1,25 @@
+.appt{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap: 20px;
+    padding: 10px;
+}
+.box{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap: 20px;
+    padding: 10px;
+    padding-bottom: 50px;
+}
+.scroller{
+    display:flex;
+    gap: 20px;
+}
+
+
+.box{
+    width:100%;
+    overflow-x: scroll ;
+}

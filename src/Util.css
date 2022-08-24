@@ -1,0 +1,21 @@
+.flex__wrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex__center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex__column{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+:root{
+    --primary:#00923F;
+    --secondary:#F8C300;
+}
