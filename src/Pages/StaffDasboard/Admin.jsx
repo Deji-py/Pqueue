@@ -9,13 +9,14 @@ import Header from "../../GlobalComp/Header/header";
 import PrioityCard from "../StudentDasboard/PrioityCard";
 import { Students } from "../../components/Students";
 import { StyledCard } from "../../components/StyledCard";
-import { StudentTable } from "../../components/StudentTable";
+import {StudentTable} from "../../components/StudentTable"
 import { DashboardSidebar } from "../../components/DashboardSidebar";
 import { InfoCard } from "../../components/Infocard";
 
 import { CourseFormAppt } from "../../components/CourseFormApptQueue";
 import { AdminChart } from "../../components/AdminChart";
 import MobileMenu from "../../components/MobileMenu";
+import AddtaskForm from "../../GlobalComp/Form/AddtaskForm";
 
 //Test data for the algorithm....i want to get a queue
 
@@ -27,6 +28,7 @@ import MobileMenu from "../../components/MobileMenu";
 function Admin({ toggle }) {
   const [profileToggle, setProfileToggle] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
+  const [taskToggle, setTaskToggle] = useState(false)
 
   return (
     <div style={{ position: "relative" }}>
@@ -36,10 +38,11 @@ function Admin({ toggle }) {
       </Helmet>
       <DashboardNav setToggle={setProfileToggle} toggle={profileToggle} />
       <AdminProfile toggle={profileToggle} />
-      <InfoCard />
+      <InfoCard setToggle={setTaskToggle}/>
+      <AddtaskForm setToggler={setTaskToggle} toggler={taskToggle}/>
 
       <div className=" flex__center">
-        <StudentTable />
+        <StudentTable/>
       </div>
 
       <div className="box">

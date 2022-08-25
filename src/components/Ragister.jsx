@@ -1,5 +1,3 @@
-
-
 import {
   Box,
   Button,
@@ -8,55 +6,33 @@ import {
   FormHelperText,
   Link,
   TextField,
-  Typography
-} from '@mui/material';
-import { BiArrowBack } from 'react-icons/bi';
-
+  Typography,
+} from "@mui/material";
+import { BiArrowBack } from "react-icons/bi";
 
 const Register = () => {
-
-
   return (
     <>
-      {/* <Head>
-        <title>
-          Register | Material Kit
-        </title>
-      </Head> */}
       <Box
         component="main"
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           flexGrow: 1,
-          minHeight: '100%'
+          minHeight: "100%",
         }}
       >
         <Container maxWidth="sm">
-          {/* <NextLink
-            href="/"
-            passHref
-          >
-            <Button
-              component="a"
-              startIcon={<BiArrowBack fontSize="small" />}
-            >
-              Dashboard
-            </Button>
-          </NextLink> */}
-          <form >
+          <Button component="a" startIcon={<BiArrowBack fontSize="small" />}>
+            Dashboard
+          </Button>
+
+          <form>
             <Box sx={{ my: 3 }}>
-              <Typography
-                color="textPrimary"
-                variant="h4"
-              >
+              <Typography color="textPrimary" variant="h4">
                 Create a new account
               </Typography>
-              <Typography
-                color="textSecondary"
-                gutterBottom
-                variant="body2"
-              >
+              <Typography color="textSecondary" gutterBottom variant="body2">
                 Use your email to create a new account
               </Typography>
             </Box>
@@ -72,7 +48,7 @@ const Register = () => {
               value=""
               variant="outlined"
             />
-          <TextField
+            <TextField
               error=""
               fullWidth
               helperText=""
@@ -84,98 +60,69 @@ const Register = () => {
               value=""
               variant="outlined"
             />
-            {/* <TextField
-              error={Boolean(formik.touched.email && formik.errors.email)}
+            <TextField
+              // error={Boolean("hey")}
               fullWidth
-              helperText={formik.touched.email && formik.errors.email}
+              helperText={"hey"}
               label="Email Address"
               margin="normal"
               name="email"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
+              onBlur=""
+              onChange=""
               type="email"
-              value={formik.values.email}
+              value=""
               variant="outlined"
             />
             <TextField
-              error={Boolean(formik.touched.password && formik.errors.password)}
+              error={Boolean("hey")}
               fullWidth
-              helperText={formik.touched.password && formik.errors.password}
+              helperText={"hey"}
               label="Password"
               margin="normal"
               name="password"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
+              onBlur=""
+              onChange=""
               type="password"
-              value={formik.values.password}
+              value=""
               variant="outlined"
             />
             <Box
               sx={{
-                alignItems: 'center',
-                display: 'flex',
-                ml: -1
+                alignItems: "center",
+                display: "flex",
+                ml: -1,
               }}
             >
-              <Checkbox
-                checked={formik.values.policy}
-                name="policy"
-                onChange={formik.handleChange}
-              />
-              <Typography
-                color="textSecondary"
-                variant="body2"
-              >
-                I have read the
-                {' '}
-                <NextLink
-                  href="#"
-                  passHref
-                >
-                  <Link
-                    color="primary"
-                    underline="always"
-                    variant="subtitle2"
-                  >
+              <Checkbox checked="" name="policy" onChange="" />
+              <Typography color="textSecondary" variant="body2">
+                I have read the{" "}
+      
+                  <Link color="primary" underline="always" variant="subtitle2">
                     Terms and Conditions
                   </Link>
-                </NextLink>
+                
               </Typography>
             </Box>
-            {Boolean(formik.touched.policy && formik.errors.policy) && (
-              <FormHelperText error>
-                {formik.errors.policy}
-              </FormHelperText>
-            )}
+            {/* {Boolean(formik.touched.policy && formik.errors.policy) && (
+              <FormHelperText error>{formik.errors.policy}</FormHelperText>
+            )} */}
             <Box sx={{ py: 2 }}>
               <Button
                 color="primary"
-                disabled={formik.isSubmitting}
+                disabled=""
                 fullWidth
                 size="large"
                 type="submit"
                 variant="contained"
-              > */}
-                {/* Sign Up Now
-              </Button> */}
-            {/* </Box> */}
-            <Typography
-              color="textSecondary"
-              variant="body2"
-            >
-              Have an account?
-              {' '}
-              {/* <NextLink
-                href="/login"
-                passHref
               >
-                <Link
-                  variant="subtitle2"
-                  underline="hover"
-                >
-                  Sign In
-                </Link>
-              </NextLink> */}
+                Sign Up Now
+              </Button>
+            </Box>
+            <Typography color="textSecondary" variant="body2">
+              Have an account?{" "}
+              <Link variant="subtitle2" underline="hover">
+                Sign In
+              </Link>
             </Typography>
           </form>
         </Container>
