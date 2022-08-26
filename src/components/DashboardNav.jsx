@@ -15,12 +15,13 @@ import {
 } from "@mui/material";
 import logo from "../Asset/logoyct.png";
 import { Bell as BellIcon } from "../icons/bell";
+import {AvatarGenerator} from "random-avatar-generator"
 import { UserCircle as UserCircleIcon } from "../icons/user-circle";
 import { Users as UsersIcon } from "../icons/users";
 import { FaSearch } from "react-icons/fa";
 import random from 'random-profile-generator'
 export const DashboardNav = ({setToggle, toggle}) => {
-
+  const gen= new AvatarGenerator()
   return (
     <>
       <Card
@@ -78,7 +79,7 @@ export const DashboardNav = ({setToggle, toggle}) => {
               width: 40,
               ml: 1,
             }}
-            src=""
+            src={gen.generateRandomAvatar()}
             onClick={()=>setToggle(!toggle)}
           >
           </Avatar>

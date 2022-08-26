@@ -19,7 +19,7 @@ function MobileMenu({toggle, setToggle, home}) {
           padding: "10px",
           color: "white",
           border: "none",
-          boxShadow: "0px 2px 8px whitesmoke",
+          boxShadow: "0px 2px 8px rgba(0,0,0,0.3)",
           background: "black",
         }}
       >

@@ -25,7 +25,7 @@ import AddtaskForm from "../../GlobalComp/Form/AddtaskForm";
 
 // creating object for queue class
 
-function Admin({ toggle }) {
+function Admin({ toggle, addDoc }) {
   const [profileToggle, setProfileToggle] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const [taskToggle, setTaskToggle] = useState(false)

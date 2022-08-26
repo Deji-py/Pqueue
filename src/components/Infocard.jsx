@@ -15,7 +15,7 @@ export const InfoCard = ({setToggle}) => {
   
   return (
     <Card
-      sx={{ height: "100%", margin: "10px", background: "var(--blue-dim)" }}
+      sx={{ height: "100%", margin: "10px", background: "black" }}
     >
       <CardContent>
         <Grid

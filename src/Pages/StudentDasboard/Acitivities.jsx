@@ -1,7 +1,8 @@
 import { v4 as uuid } from "uuid";
 import { AvatarGenerator } from "random-avatar-generator";
 import randomColor from "random-color";
-
+import { collection, getDocs } from "@firebase/firestore";
+import { db } from "../../firebase-config";
 import {
   Avatar,
   Box,
@@ -16,6 +17,7 @@ import {
   ListItemAvatar,
   ListItemText,
   TableHead,
+  Typography,
 } from "@mui/material";
 import {
   BsArrowRight,
@@ -25,114 +27,130 @@ import {
 } from "react-icons/bs";
 import { BiBox, BiRectangle } from "react-icons/bi";
 import { TiMediaPause } from "react-icons/ti";
+import { useEffect, useState } from "react";
 const generator = new AvatarGenerator();
-const products = [
-  {
-    id: uuid(),
-    name: "Dropbox",
-    imageUrl: generator.generateRandomAvatar(),
-    updatedAt: "pending",
-  },
-  {
-    id: uuid(),
-    name: "Medium Corporation",
-    imageUrl: generator.generateRandomAvatar(),
-    updatedAt: "pending",
-  },
-  {
-    id: uuid(),
-    name: "Slack",
-    imageUrl: generator.generateRandomAvatar(),
-    updatedAt: "pending",
-  },
-  {
-    id: uuid(),
-    name: "Lyft",
-    imageUrl: generator.generateRandomAvatar(),
-    updatedAt: "pending",
-  },
-  {
-    id: uuid(),
-    name: "GitHub",
-    imageUrl: generator.generateRandomAvatar(),
-    updatedAt: "pending",
-  },
-];
 
 const randomcolor = randomColor();
 const newColors = randomcolor.hexString();
+const taskcollection = collection(db, "StudentTasks");
 
-export const Activities = ({}) => (
-  <Card
-    sx={{
-      mt: "10px",
-      borderRadius: "20px",
-      background: "whitesmoke",
-      boxShadow: "0px 2px 6px rgba(200,200,200, 0.5)",
-    }}
-  >
-    <CardHeader
-      subtitle={`${products.length} in total`}
-      title=" MY STUDENT ACTIVITIES"
-    />
+export const Activities = ({}) => {
+  const [status, setStatus] = useState("Active");
+  const [studentTask, setStudentTask] = useState([]);
 
-    <List>
-      {products.map((product, i) => (
-        <ListItem
-          divider={i < products.length - 1}
-          key={product.id}
-          sx={{ border: "none" }}
-        >
-          <BiRectangle
-            style={{ background: newColors, color: newColors, margin: "10px" }}
-          />
+  useEffect(() => {
+    const getTask = async () => {
+      const data = await getDocs(taskcollection);
+      setStudentTask(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
 
-          <ListItemText
-            primary={product.name}
-            secondary={
-              <Chip
-                label={product.updatedAt}
-                size="small"
-                // onClick={handleClick}
-                // onDelete={handleDelete}
-                deleteIcon={<TiMediaPause />}
-              />
-            }
-          />
-          <Button
-            variant="contained"
-            size="small"
-            disableElevation
-            sx={{
-              borderRadius: "100px",
-              fontSize: "12px",
-              background: "var(--primary)",
-            }}
-          >
-            Proceed
-          </Button>
-          <IconButton edge="end" size="small">
-            <BsThreeDotsVertical />
-          </IconButton>
-        </ListItem>
-      ))}
-    </List>
+    getTask();
+  }, [studentTask]);
 
-    <Box
+  return (
+    <Card
       sx={{
-        display: "flex",
-        justifyContent: "flex-end",
-        p: 2,
+        mt: "10px",
+        borderRadius: "20px",
+        background: "whitesmoke",
+        boxShadow: "0px 2px 6px rgba(200,200,200, 0.5)",
       }}
     >
-      <Button
-        sx={{ color: "#707070" }}
-        endIcon={<BsArrowRight />}
-        size="small"
-        variant="text"
+      <CardHeader
+        subtitle={studentTask.length + "in total"}
+        title=" MY STUDENT ACTIVITIES"
+      />
+
+      <List>
+        {studentTask.map((task, i) => (
+          <ListItem
+            divider={i < studentTask.length - 1}
+            key={task.id}
+            sx={{ border: "none" }}
+          >
+            <BiRectangle
+              style={{
+                background: newColors,
+                color: newColors,
+                margin: "10px",
+              }}
+            />
+            <LinearProgress variant="determinate" value={30} />
+            <ListItemText
+              sx={{ fontSize: "20px" }}
+              primary={task.task}
+              secondary={
+                i === 0 ? (
+                  <Chip
+                    label={"Active"}
+                    size="small"
+                    sx={{ background: "orangered", color: "white" }}
+                    // onClick={handleClick}
+                    // onDelete={handleDelete}
+                    deleteIcon={<TiMediaPause />}
+                  />
+                ) : (
+                  <Chip
+                    label={"In Active"}
+                    size="small"
+                    sx={{ background: "#c5c5c5", color: "black" }}
+                    // onClick={handleClick}
+                    // onDelete={handleDelete}
+                    deleteIcon={<TiMediaPause />}
+                  />
+                )
+              }
+            />
+            {i === 0 ? (
+              <Button
+                variant="contained"
+                size="small"
+                disableElevation
+                sx={{
+                  fontSize: "12px",
+                  background: "var(--blue)",
+                }}
+              >
+                start
+              </Button>
+            ) : (
+              <Typography
+                variant="body"
+                size="small"
+                sx={{
+                  fontSize: "12px",
+                  color: "gray",
+
+                }}
+              >
+                ...pending
+                
+              </Typography>
+            )}
+
+            <IconButton edge="end" size="small">
+              <BsThreeDotsVertical />
+            </IconButton>
+          </ListItem>
+        ))}
+      </List>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          p: 2,
+        }}
       >
-        View all
-      </Button>
-    </Box>
-  </Card>
-);
+        <Button
+          sx={{ color: "#707070" }}
+          endIcon={<BsArrowRight />}
+          size="small"
+          variant="text"
+        >
+          View all
+        </Button>
+      </Box>
+    </Card>
+  );
+};
