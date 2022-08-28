@@ -75,31 +75,37 @@ function Homepage() {
           className="ctas flex__center"
           style={{ width: "90%", paddingTop: "20px" }}
         >
-          <button
+          <Button
             variant="contained"
             disableElevation
             onClick={() => setStudentToggle(true)}
             className="cta"
             style={{
               background: "var(--secondary)",
-              color: "black"
-          
+              color: "black",
+              padding:"15px", 
+              borderRadius:"10px",
+              width:"100%",
+              marginTop:"20px"
             }}
           >
           Sign in as Student
-          </button>
-          <button
+          </Button>
+          <Button
             variant="contained"
             disableElevation
             onClick={() => setStaffToggle(true)}
-            className="cta"
             style={{
               background: "var(--primary)",
               color: "white",
+              padding:"15px", 
+              borderRadius:"10px",
+              width:"100%",
+              marginTop:"20px"
             }}
           >
            Sign in as Course Adviser
-          </button>
+          </Button>
 
       
         </div>

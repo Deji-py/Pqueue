@@ -5,12 +5,11 @@
 
   .header{
     width: 100%;
-    padding: 20px !important;
+    display: block !important;
     background-color: whitesmoke;
   }
   .title{
     font-size: 15px !important;
-    width: 150px;
     margin-left: 10px;
   }
 
@@ -45,7 +44,7 @@
     width: 100% !important;
     font-size: medium !important;
     height: 500px !important;
-    transform: translateY(80px) !important;
+    margin-top: 20vh;
     padding-top: 50px !important;
   }
   .container{
@@ -109,7 +108,7 @@
   .about{
     width:100%;
     height:80vh;
-    margin-top: 280px !important;;
+    margin-top: 500px !important;;
     overflow: hidden;
     background-color:  var(--primary) ;
     position: relative;

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import {
+  Box,
   Button,
   Card,
+  Container,
   FormControl,
   IconButton,
   InputLabel,
@@ -9,12 +11,14 @@ import {
   Modal,
   Select,
   TextField,
+  Typography,
 } from "@mui/material";
 import { ImCancelCircle } from "react-icons/im";
 
 import "./form.css";
 import { Link } from "react-router-dom";
 import Register from "../../components/Ragister";
+import { BiArrowBack } from "react-icons/bi";
 
 function StaffLogin({ toggler, setToggler }) {
   const [age, setAge] = useState("");
@@ -27,83 +31,102 @@ function StaffLogin({ toggler, setToggler }) {
       className="modal flex__column"
       style={{ display: toggler === true ? "flex" : "none" }}
     >
-      <Card sx={{ padding: "30px" }} className="formcard">
-        <IconButton
-          aria-label="delete"
-          onClick={() => setToggler(false)}
-          style={{ transform: "translateY(-20px)" }}
-        >
-          <ImCancelCircle />
-        </IconButton>
-        <h3>LOGIN TO YOUR STAFF ACCOUNT</h3>
-        <form className="flex__column">
-          <TextField
-            id="outlined-basic"
-            label="STAFF ID"
-            variant="outlined"
-            sx={{
-              marginTop: "30px",
-              width: "100%",
-              ":focus": {
-                border: "solid 5px red",
-              },
-            }}
-          />
-
-          <TextField
-            id="outlined-basic"
-            label="Email Adress"
-            variant="outlined"
-            sx={{ marginTop: "30px", width: "100%" }}
-          />
-
-          <TextField
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-            sx={{ marginTop: "30px", width: "100%" }}
-          />
-          <Link to="/admin" style={{width: "100%", textDecoration:"none"}}>
-            <Button
-              variant="contained"
-              sx={{
-                background: "var(--primary)",
-                marginTop: "20px",
-                width: "100%",
-                color: "white",
-                fontWeight: "bolder",
-                fontSize: "17px",
-                padding: "15px",
-                ":hover": {
-                  background: "var(--primary)",
-                },
-              }}
-              disableElevation
-            >
-              Log in
-            </Button>
-          </Link>
-        </form>
-
-        <p style={{ marginTop: "10px" }}>Forgot Password?</p>
-
-        <p style={{ marginTop: "40px", textAlign: "center" }} className="qta">
-          Dont have an account?{" "}
-          <Link to="/staffsignup">
-          <span
-          
-            style={{
-              color: "white",
-              padding: "10px",
-              background: "grey",
-            }}
+      <Box
+        component="main"
+        sx={{
+          alignItems: "center",
+          display: "flex",
+          flexGrow: 1,
+          minHeight: "100%",
+          overflow: "scroll",
+        }}
+      >
+        <Container maxWidth="sm">
+          <Button
+            component="a"
+            startIcon={<BiArrowBack fontSize="small" />}
+            onClick={() => setToggler(false)}
           >
-            Signup
-          </span>
-          </Link>
-        </p>
- 
-      </Card>
+            Back
+          </Button>
+
+          <form>
+            <Box sx={{ my: 3 }}>
+              <Typography color="textPrimary" variant="h4">
+                Sign in to your Account
+              </Typography>
+              <Typography color="textSecondary" gutterBottom variant="body2">
+                Use your email to sign in account
+              </Typography>
+            </Box>
+            <TextField
+              // error={Boolean("hey")}
+              fullWidth
+              error={true}
+              required={true}
+              helperText={"incorrect ID"}
+              label="Staff ID"
+              margin="normal"
+              name="email"
+              onBlur=""
+              onChange=""
+              type="email"
+              value=""
+              variant="outlined"
+            />
+            <TextField
+              // error={Boolean("hey")}
+              fullWidth
+              error={true}
+              required={true}
+              helperText={"invalid email"}
+              label="Email Address"
+              margin="normal"
+              name="email"
+              onBlur=""
+              onChange=""
+              type="email"
+              value=""
+              variant="outlined"
+            />
+            <TextField
+              error={true}
+              fullWidth
+              helperText={"password incorrect "}
+              required={true}
+              label="Password"
+              margin="normal"
+              name="password"
+              onBlur=""
+              onChange=""
+              type="password"
+              value=""
+              variant="outlined"
+            />
+
+            <Box sx={{ py: 2 }}>
+              <Button
+                sx={{
+                  background: "var(--primary)",
+                  padding: "15px",
+                  borderRadius: "10px",
+                }}
+                disabled=""
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained"
+                disableElevation
+              >
+                Login
+              </Button>
+            </Box>
+            <Typography color="textSecondary" variant="body2">
+              Dont have an account? <Link to={"/staffsignup"}>Sign up</Link>
+            </Typography>
+          </form>
+        </Container>
+      </Box>
     </div>
   );
 }

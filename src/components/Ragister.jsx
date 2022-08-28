@@ -4,17 +4,35 @@ import {
   Checkbox,
   Container,
   FormHelperText,
-  Link,
+  MenuItem,
   TextField,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [department, setDepartment] = useState("");
+  const [value, setValue] = useState("Computer Science");
+  const [dateofbirth, setDateofbirth] = useState(null);
+  const [level, setLevel] = useState("");
+
+  const departmentAvailable = [
+    { value: "Computer Science" },
+    { value: "Engineering" },
+  ];
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
-    <>
+   
       <Box
-        component="main"
+        className="main"
         sx={{
           alignItems: "center",
           display: "flex",
@@ -23,10 +41,11 @@ const Register = () => {
         }}
       >
         <Container maxWidth="sm">
-          <Button component="a" startIcon={<BiArrowBack fontSize="small" />}>
-            Dashboard
-          </Button>
-
+          <Link to="/">
+            <Button component="a" startIcon={<BiArrowBack fontSize="small" />}>
+              Back
+            </Button>
+          </Link>
           <form>
             <Box sx={{ my: 3 }}>
               <Typography color="textPrimary" variant="h4">
@@ -35,8 +54,8 @@ const Register = () => {
               <Typography color="textSecondary" gutterBottom variant="body2">
                 Use your email to create a new account
               </Typography>
-            </Box>
             <TextField
+              required={true}
               error=""
               fullWidth
               helperText=""
@@ -49,21 +68,79 @@ const Register = () => {
               variant="outlined"
             />
             <TextField
+              required={true}
               error=""
               fullWidth
               helperText=""
-              label="LastName Name"
+              label="Last Name"
               margin="normal"
-              name="lasttName"
+              name="Last Name"
               onBlur=""
               onChange=""
               value=""
               variant="outlined"
             />
             <TextField
+              required={true}
+              error=""
+              fullWidth
+              helperText=""
+              label="Programme"
+              type={"text"}
+              margin="normal"
+              name="firstName"
+              onBlur=""
+              onChange=""
+              value=""
+              variant="outlined"
+            />
+              
+            </Box>
+            <TextField
+               fullWidth
+              id="outlined-select-currency"
+              select
+              label="Department"
+              value={value}
+              onChange={handleChange}
+              sx={{position:'relative'}}
+            >
+              {departmentAvailable.map((option) => (
+                <MenuItem
+                  key={option.value}
+                  value={option.value}
+                > {option.value}</MenuItem>
+              ))}
+            </TextField>
+
+            <div className="dobWrapper" style={{ position: "relative", marginTop:'10px' }}>
+              <TextField
+                fullWidth
+                margin="normal"
+                name="lasttName"
+                onBlur=""
+                type={"date"}
+                onChange=""
+                defaultValue={"dd/mm/yyyy"}
+                variant="outlined"
+              />
+              <label
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  fontSize: "14px",
+                }}
+              >
+                Date of Birth
+              </label>
+            </div>
+            <TextField
               // error={Boolean("hey")}
               fullWidth
-              helperText={"hey"}
+              error={true}
+              required={true}
+              helperText={"invalid email"}
               label="Email Address"
               margin="normal"
               name="email"
@@ -74,9 +151,13 @@ const Register = () => {
               variant="outlined"
             />
             <TextField
-              error={Boolean("hey")}
+              error={true}
               fullWidth
-              helperText={"hey"}
+              helperText={
+                "The password must contain at least 8 character and contain one Uppercase character "
+              }
+              l
+              required={true}
               label="Password"
               margin="normal"
               name="password"
@@ -96,11 +177,13 @@ const Register = () => {
               <Checkbox checked="" name="policy" onChange="" />
               <Typography color="textSecondary" variant="body2">
                 I have read the{" "}
-      
-                  <Link color="primary" underline="always" variant="subtitle2">
-                    Terms and Conditions
-                  </Link>
-                
+                <Typography
+                  color="primary"
+                  underline="always"
+                  variant="subtitle2"
+                >
+                  Terms and Conditions
+                </Typography>
               </Typography>
             </Box>
             {/* {Boolean(formik.touched.policy && formik.errors.policy) && (
@@ -108,26 +191,23 @@ const Register = () => {
             )} */}
             <Box sx={{ py: 2 }}>
               <Button
-                color="primary"
+                sx={{padding:"15px", background:"var(--primary)"}}
                 disabled=""
                 fullWidth
                 size="large"
                 type="submit"
+                disableElevation
                 variant="contained"
               >
-                Sign Up Now
+                Create Account
               </Button>
             </Box>
-            <Typography color="textSecondary" variant="body2">
-              Have an account?{" "}
-              <Link variant="subtitle2" underline="hover">
-                Sign In
-              </Link>
+            <Typography color="textSecondary" variant="body2" >
+              Have an account? <Link to={"/admin"}>Sign In</Link>
             </Typography>
           </form>
         </Container>
       </Box>
-    </>
   );
 };
 

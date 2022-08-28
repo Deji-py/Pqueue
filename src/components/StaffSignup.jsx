@@ -24,7 +24,7 @@ function StaffSignup({ toggler, setToggler }) {
   };
   return (
     <div className="modal flex__column">
-      <Card sx={{ padding: "30px" }} className="formcard">
+      <Card className="formcard">
         <Register />
       </Card>
     </div>

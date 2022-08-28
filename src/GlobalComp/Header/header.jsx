@@ -10,13 +10,13 @@ function Header({page, bgcolor}) {
   const [mobileMenuToggle, setMobileMenuToggle] = useState(false);
   return (
     <div style={{position:"relative", width:"100%"}}>
-    <motion.div className="mobileMenu" animate={{  y:mobileMenuToggle?0:-250}}>
+    {/* <motion.div className="mobileMenu" animate={{  y:mobileMenuToggle?0:-250}}>
     <Card sx={{height:"200px", width:"100%", paddingTop:"50px"}}>
       <MenuItem sx={{textTranform:"none"}}>Home</MenuItem>
       <MenuItem sx={{textTranform:"none"}}>About</MenuItem>
       <MenuItem sx={{textTranform:"none"}}>Contact</MenuItem>
     </Card>
-    </motion.div>
+    </motion.div> */}
     <div className="header flex__wrapper" style={{background:(page ==="home")? "white":bgcolor}}>
     
      
@@ -30,7 +30,7 @@ function Header({page, bgcolor}) {
       <MenuItem sx={{textTranform:"none"}}>Contact</MenuItem>
       </div>
       
-      <IconButton
+      {/* <IconButton
         variant="contained"
         className="mobileHam"
         onClick={() => setMobileMenuToggle(!mobileMenuToggle)}
@@ -51,7 +51,7 @@ function Header({page, bgcolor}) {
        
 
  
-      </IconButton>
+      </IconButton> */}
 
       <IconButton
         variant="contained"

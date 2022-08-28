@@ -31,7 +31,6 @@ import { ImBoxRemove, ImStarEmpty } from "react-icons/im";
 export const StudentTable = () => {
   const [studentTasks, setStudentTasks] = useState([]);
   const taskCollectionRef = table(db, "StudentTasks");
-
   useEffect(() => {
     const getTasks = async () => {
       const taskdata = await getDocs(taskCollectionRef);
@@ -48,6 +47,8 @@ export const StudentTable = () => {
     deleteDoc(taskDoc);
   };
 
+
+
   const totalStudents = 1000;
   const submitted = 700;
 
@@ -57,9 +58,11 @@ export const StudentTable = () => {
     <Card sx={{ width: "100%", overflowX: "scroll" }}>
       <CardHeader title="Latest Tasks" />
       {studentTasks.length === 0 ? (
-        <div className="flex__column" style={{ width:'100%', height:"30vh"}}>
-          <ImBoxRemove size={80} style={{color:"gray"}} />
-          <h3 style={{ padding:'10px', color:"gray"}}>NO TASKS ADDED YET</h3>
+        <div className="flex__column" style={{ width: "100%", height: "30vh" }}>
+          <h3 style={{ padding: "10px", color: "gray" }}>
+         "No task Added"
+          </h3>
+
         </div>
       ) : (
         <Box sx={{ minWidth: 800 }}>
