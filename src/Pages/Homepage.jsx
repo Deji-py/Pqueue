@@ -16,11 +16,16 @@ import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
 import { ImArrowLeft, ImPrevious, ImPrevious2 } from "react-icons/im";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
+import { UserAuth } from "../Auth-Context";
+import { useNavigate } from "react-router-dom";
 
 function Homepage() {
   const slides = [backimg, img1, img2];
   const [studenttoggle, setStudentToggle] = useState(false);
   const [stafftoggle, setStaffToggle] = useState(false);
+  const {usertype, user}  = UserAuth()
+  const navigate = useNavigate()
+
   return (
     <div className="home flex__column" style={{ position: "relative" }}>
       <Helmet>

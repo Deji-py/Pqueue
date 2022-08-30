@@ -14,6 +14,7 @@ export const userContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [usertype, setUsertype] = useState('');
   
   const Userprofile = (firstname, lastname) => {
     return updateProfile(auth.currentUser, {
@@ -50,6 +51,8 @@ export const AuthContextProvider = ({ children }) => {
         Userlogout,
         Userlogin,
         Userprofile,
+        usertype,
+        setUsertype
       }}
     >
       {children}

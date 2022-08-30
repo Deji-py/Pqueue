@@ -5,18 +5,32 @@ import { Button, Card, Hidden, IconButton, MenuItem } from "@mui/material";
 import { HiLogout, HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 import { FaDoorOpen } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Header({page, bgcolor}) {
   const [mobileMenuToggle, setMobileMenuToggle] = useState(false);
   return (
     <div style={{position:"relative", width:"100%"}}>
-    {/* <motion.div className="mobileMenu" animate={{  y:mobileMenuToggle?0:-250}}>
-    <Card sx={{height:"200px", width:"100%", paddingTop:"50px"}}>
+    <motion.div className="mobileMenu" animate={{  y:mobileMenuToggle?0:-250}}>
+    <Card sx={{width:"100%", paddingTop:"50px"}}>
       <MenuItem sx={{textTranform:"none"}}>Home</MenuItem>
       <MenuItem sx={{textTranform:"none"}}>About</MenuItem>
       <MenuItem sx={{textTranform:"none"}}>Contact</MenuItem>
+      <Link to="/staffsignup" style={{textDecoration:'none'}}>
+        <Button variant ="outlined" size="small" sx={{borderRadius:"100px", marginLeft:'10px',color:"var(--primary)",border:"solid 2px var(--primary)"}} >
+          Admin Signup
+        </Button>
+    
+      </Link>
+      <Link to="/" style={{textDecoration:'none'}}>
+        <Button variant ="outlined" size="small" sx={{borderRadius:"100px", margin:'10px 0px 10px 10px', color:"black", border:"solid 2px var(--secondary)"}} >
+         Student Signup
+        </Button>
+    
+      </Link>
+
     </Card>
-    </motion.div> */}
+    </motion.div>
     <div className="header flex__wrapper" style={{background:(page ==="home")? "white":bgcolor}}>
     
      
@@ -30,7 +44,7 @@ function Header({page, bgcolor}) {
       <MenuItem sx={{textTranform:"none"}}>Contact</MenuItem>
       </div>
       
-      {/* <IconButton
+      <IconButton
         variant="contained"
         className="mobileHam"
         onClick={() => setMobileMenuToggle(!mobileMenuToggle)}
@@ -51,7 +65,7 @@ function Header({page, bgcolor}) {
        
 
  
-      </IconButton> */}
+      </IconButton>
 
       <IconButton
         variant="contained"

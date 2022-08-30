@@ -15,19 +15,36 @@ import {
 } from "@mui/material";
 import logo from "../Asset/logoyct.png";
 import { Bell as BellIcon } from "../icons/bell";
-import {AvatarGenerator} from "random-avatar-generator"
+import { AvatarGenerator } from "random-avatar-generator";
 import { UserCircle as UserCircleIcon } from "../icons/user-circle";
 import { Users as UsersIcon } from "../icons/users";
-import { FaSearch } from "react-icons/fa";
-import random from 'random-profile-generator'
-export const DashboardNav = ({setToggle, toggle}) => {
-  const gen= new AvatarGenerator()
+import { FaDoorOpen, FaSearch } from "react-icons/fa";
+import random from "random-profile-generator";
+import { UserAuth } from "../Auth-Context";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase-config";
+import { signOut } from "firebase/auth";
+
+export const DashboardNav = ({ setToggle, toggle }) => {
+  const { user } = UserAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    const Userlogout = () => {
+      signOut(auth);
+    };
+    Userlogout()
+    console.log(user);
+    navigate("/");
+  };
+ 
+
+  const gen = new AvatarGenerator();
   return (
     <>
       <Card
         sx={{
           width: "100%",
-          boxShadow:"0 2px 6px rgba(100,100,100, 0.2)"
+          boxShadow: "0 2px 6px rgba(100,100,100, 0.2)",
         }}
       >
         <Toolbar
@@ -38,51 +55,55 @@ export const DashboardNav = ({setToggle, toggle}) => {
             px: 2,
           }}
         >
-          
-          <div className="adminTitle flex__wrapper" >
-          <Tooltip title="Search" >
-            <Paper
-              component={"img"}
-              src={logo}
-              alt="logo"
-              sx={{
-                width: {
-                  lg: "50px",
-                  xs: "40px",
-                  border: "none",
-                  boxShadow: "none",
-                  
-                },
+          <div className="adminTitle flex__wrapper">
+            <Tooltip title="Search">
+              <Paper
+                component={"img"}
+                src={logo}
+                alt="logo"
+                sx={{
+                  width: {
+                    lg: "50px",
+                    xs: "40px",
+                    border: "none",
+                    boxShadow: "none",
+                  },
+                }}
+              />
+            </Tooltip>
+            <h3
+              class="bigText"
+              style={{ marginLeft: "10px", color: "#444444" }}
+            >
+              Admin
+            </h3>
+          </div>
+
+          <Box sx={{ flexGrow: 1 }} />
+
+          <IconButton
+            variant="contained"
+            className="mobileHam"
+            sx={{
+              display: "flex",
+              fontSize: "30px",
+              color: "white",
+              textTransform: "none",
+              background: "white",
+              boxShadow: "0px 2px 8px rgba(150, 150, 150, 0.5)",
+              ":hover": {
+                background: "white",
+              },
+            }}
+          >
+            <FaDoorOpen
+              size={25}
+              color="black"
+              onClick={() => {
+                handleLogout();
               }}
             />
-     
-          </Tooltip>
-          <h3 class="bigText" style={{marginLeft:"10px", color:"#444444"}}>Admin</h3>
-          </div>
-       
-          <Box sx={{ flexGrow: 1 }} />
-          <Tooltip title="Contacts">
-            <IconButton sx={{ ml: 1 }}>
-              <UsersIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Notifications">
-            <IconButton sx={{ ml: 1 }}>
-              <Badge badgeContent={4} color={"error"} variant={"dot"}>
-                <BellIcon fontSize="small" />
-              </Badge>
-            </IconButton>
-          </Tooltip>
-          <Avatar
-            sx={{
-              height: 40,
-              width: 40,
-              ml: 1,
-            }}
-            src={gen.generateRandomAvatar()}
-            onClick={()=>setToggle(!toggle)}
-          >
-          </Avatar>
+          </IconButton>
         </Toolbar>
       </Card>
     </>

@@ -17,6 +17,7 @@ import { CourseFormAppt } from "../../components/CourseFormApptQueue";
 import { AdminChart } from "../../components/AdminChart";
 import MobileMenu from "../../components/MobileMenu";
 import AddtaskForm from "../../GlobalComp/Form/AddtaskForm";
+import { UserAuth } from "../../Auth-Context";
 
 //Test data for the algorithm....i want to get a queue
 
@@ -29,7 +30,8 @@ function Admin({ toggle, addDoc }) {
   const [profileToggle, setProfileToggle] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const [taskToggle, setTaskToggle] = useState(false)
-
+  const {setUsertype} = UserAuth()
+  setUsertype("admin")
   return (
     <div style={{ position: "relative" }}>
       <Helmet>

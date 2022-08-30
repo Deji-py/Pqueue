@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Card,
+  CircularProgress,
   Container,
   FormControl,
   IconButton,
@@ -10,21 +11,47 @@ import {
   MenuItem,
   Modal,
   Select,
+  Snackbar,
+  SnackbarContent,
   TextField,
   Typography,
 } from "@mui/material";
-import { ImCancelCircle } from "react-icons/im";
+import { ImCancelCircle, ImWarning } from "react-icons/im";
 
 import "./form.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Register from "../../components/Ragister";
 import { BiArrowBack } from "react-icons/bi";
+import { UserAuth } from "../../Auth-Context";
 
 function StaffLogin({ toggler, setToggler }) {
-  const [age, setAge] = useState("");
+  const [staffID, setStaffID] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isloading, setIsloading] = useState(false);
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const [error, setError] = useState(false);
+  
+  const [errorMsg, setErrorMsg] = useState("");
+  const { Userlogin} = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setIsloading(true);
+    try {
+      await Userlogin(email, password);
+      setError(false);
+      setErrorMsg("");
+      setIsloading(true);
+      navigate("/admin");
+ 
+    } catch {
+      setError(true);
+      setIsloading(false);
+      setErrorMsg("Wrong Email or password");
+   
+    }
   };
   return (
     <div
@@ -59,48 +86,45 @@ function StaffLogin({ toggler, setToggler }) {
                 Use your email to sign in account
               </Typography>
             </Box>
+            <Typography variant="body2" color="error">
+              {error ? <ImWarning /> : ""} {errorMsg}
+            </Typography>
+
             <TextField
               // error={Boolean("hey")}
               fullWidth
-              error={true}
               required={true}
-              helperText={"incorrect ID"}
+              // helperText={"incorrect ID"}
               label="Staff ID"
               margin="normal"
-              name="email"
+              name="staffid"
               onBlur=""
-              onChange=""
-              type="email"
-              value=""
+              onChange={(e) => setStaffID(e.target.value)}
+              type="text"
               variant="outlined"
             />
             <TextField
-              // error={Boolean("hey")}
+              error={error}
               fullWidth
-              error={true}
               required={true}
-              helperText={"invalid email"}
               label="Email Address"
               margin="normal"
               name="email"
               onBlur=""
-              onChange=""
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
-              value=""
               variant="outlined"
             />
             <TextField
-              error={true}
+              error={error}
               fullWidth
-              helperText={"password incorrect "}
               required={true}
               label="Password"
               margin="normal"
               name="password"
               onBlur=""
-              onChange=""
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
-              value=""
               variant="outlined"
             />
 
@@ -110,15 +134,27 @@ function StaffLogin({ toggler, setToggler }) {
                   background: "var(--primary)",
                   padding: "15px",
                   borderRadius: "10px",
+                  position: "relative",
+                  ":hover": {
+                    background: "var(--primary)",
+                  },
                 }}
                 disabled=""
                 fullWidth
                 size="large"
                 type="submit"
+                onClick={(e) => handleLogin(e)}
                 variant="contained"
                 disableElevation
               >
                 Login
+                {isloading ? (
+                  <CircularProgress
+                    sx={{ position: "absolute", right: "20px", color: "white" }}
+                  />
+                ) : (
+                  ""
+                )}
               </Button>
             </Box>
             <Typography color="textSecondary" variant="body2">
