@@ -27,10 +27,27 @@ import { collection , addDoc } from "@firebase/firestore"
 import "./form.css";
 
 function AddtaskForm({ toggler, setToggler, setaddlist }) {
+  const d = new Date();
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    " Apr",
+    "May",
+    "Jun",
+    "Jul",
+    " Aug",
+    " Sept",
+    "Oct",
+    " Nov",
+    "Dec",
+  ];
+
   const [open, setOpen] = useState(false);
   const [docList, setDocList] = useState([]);
   const [picList, setPicList] = useState([]);
   const [addTask, setAddTask] = useState("");
+  const [deadline, setDeadline] = useState("");
   const [addpriority, setAddPriority] = useState(null);
   const [addDescription, setAddDescription] = useState("");
   const taskref = collection(db, "StudentTasks")
@@ -51,12 +68,14 @@ function AddtaskForm({ toggler, setToggler, setaddlist }) {
       task: addTask,
       priority: addpriority,
       description: addDescription,
+      created:d.getDate() + "," + months[d.getMonth()]+" "+ d.getUTCFullYear(),
+      deadline: deadline,
     })
   };
   const handleSubmitTask = ()=>{
     AddTask()
     setAddDescription('')
-    setAddPriority(null)
+    setAddPriority('')
     setAddTask('')
     setToggler(false);
   }
@@ -94,6 +113,7 @@ function AddtaskForm({ toggler, setToggler, setaddlist }) {
               },
             }}
           />
+          
 
           <TextField
             id="outlined-basic"
@@ -104,6 +124,38 @@ function AddtaskForm({ toggler, setToggler, setaddlist }) {
             variant="outlined"
             sx={{ marginTop: "30px", width: "100%" }}
           />
+           {/* <TextField
+            id="outlined-basic"
+            label="CreationDate"
+            contentEditable={false}
+            value ={d.getDate() + "," + months[d.getMonth()]+" "+ d.getUTCFullYear()}
+            variant="outlined"
+            sx={{
+              marginTop: "30px",
+              width: "100%",
+              ":focus": {
+                border: "solid 5px red",
+              },
+            }}
+          /> */}
+          <div className="deadline " style={{width:'100%', position:"relative",left:"0", top:"10px"}}>
+            <p style={{position:"absolute", top:"10px", right:"0"}}>Deadline</p>
+          <TextField
+            id="deadline"
+            onChange={(e) => setDeadline(e.target.value)}
+            variant="outlined"
+            type={"date"}
+            placeholder=""
+            sx={{
+              marginTop: "30px",
+              width: "100%",
+              ":focus": {
+                border: "solid 5px red",
+              },
+            }}
+          />
+          </div>
+           
 
           <textarea
             id="outlined-basic"

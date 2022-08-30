@@ -14,19 +14,15 @@ import { ImCancelCircle } from "react-icons/im";
 
 import "../GlobalComp/Form/form.css";
 import { Link } from "react-router-dom";
-import Register from "../components/Ragister";
 
-function StaffSignup({ toggler, setToggler }) {
-  const [age, setAge] = useState("");
+import StudentRegister from "./StudentRegister";
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+function StudentSignup() {
   return (
-  
-        <Register />
+
+      <StudentRegister />
     
   );
 }
 
-export default StaffSignup;
+export default StudentSignup;

@@ -91,7 +91,7 @@
 
 .mobileMenu{
   position: absolute !important;
-  z-index: 100;
+  z-index: 500;
   top: 0 !important;
   right: 0;
   width: 200px;

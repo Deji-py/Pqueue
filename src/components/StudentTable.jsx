@@ -89,7 +89,7 @@ export const StudentTable = () => {
                 <TableRow hover>
                   <TableCell>{task.priority}</TableCell>
                   <TableCell>{task.task}</TableCell>
-                  <TableCell>{task.date}</TableCell>
+                  <TableCell>{task.created}</TableCell>
                   <TableCell>
                     {/* <SeverityPill
                   color={

@@ -9,7 +9,7 @@ import imgabt from "../Asset/imgabt.png";
 import img1 from "../Asset/img1.jpg";
 import img2 from "../Asset/img2.jpg";
 import blob from "../Asset/blob.svg";
-import StudentForm from "../GlobalComp/Form/StudentForm";
+import StudentLogin from "../GlobalComp/Form/StudentLogin";
 import { useState } from "react";
 import StaffLogin from "../GlobalComp/Form/StaffLogin";
 import Slider from "react-animated-slider";
@@ -18,6 +18,7 @@ import { ImArrowLeft, ImPrevious, ImPrevious2 } from "react-icons/im";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 import { UserAuth } from "../Auth-Context";
 import { useNavigate } from "react-router-dom";
+
 
 function Homepage() {
   const slides = [backimg, img1, img2];
@@ -135,7 +136,7 @@ function Homepage() {
         </div>
         <div className="footer">copyright@2022</div>
       </div>
-      <StudentForm toggler={studenttoggle} setToggler={setStudentToggle} />
+      <StudentLogin toggler={studenttoggle} setToggler={setStudentToggle} />
       <StaffLogin toggler={stafftoggle} setToggler={setStaffToggle} />
     </div>
   );

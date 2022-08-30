@@ -9,6 +9,7 @@ import { DashboardSidebar } from "./components/DashboardSidebar";
 import StaffSignup from "./components/StaffSignup";
 import StudentDash from "./Pages/StudentDasboard/StudentDash";
 import { AuthContextProvider } from "./Auth-Context";
+import StudentSignup from "./components/StudentSignup";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/staffsignup" element={<StaffSignup />} />
+          <Route path="/studentsignup" element={<StudentSignup />} />
           <Route path="/student" element={<StudentDash />} />
           <Route path="/managestudents" element={<ManageStudents />} />
         </Routes>

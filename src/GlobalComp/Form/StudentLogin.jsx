@@ -24,7 +24,7 @@ import Register from "../../components/Ragister";
 import { BiArrowBack } from "react-icons/bi";
 import { UserAuth } from "../../Auth-Context";
 
-function StaffLogin({ toggler, setToggler }) {
+function StudentLogin({ toggler, setToggler }) {
   const [staffID, setStaffID] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +44,7 @@ function StaffLogin({ toggler, setToggler }) {
       setError(false);
       setErrorMsg("");
       setIsloading(true);
-      navigate("/admin");
+      navigate("/student");
  
     } catch {
       setError(true);
@@ -64,6 +64,7 @@ function StaffLogin({ toggler, setToggler }) {
           alignItems: "center",
           display: "flex",
           flexGrow: 1,
+          background:"cream",
           minHeight: "100%",
           overflow: "scroll",
         }}
@@ -80,7 +81,7 @@ function StaffLogin({ toggler, setToggler }) {
           <form>
             <Box sx={{ my: 3 }}>
               <Typography color="textPrimary" variant="h4">
-                Sign in to your Staff Account
+                Sign in to your Student Account
               </Typography>
               <Typography color="textSecondary" gutterBottom variant="body2">
                 Use your email to sign in account
@@ -95,7 +96,7 @@ function StaffLogin({ toggler, setToggler }) {
               fullWidth
               required={true}
               // helperText={"incorrect ID"}
-              label="Staff ID"
+              label="Matric No"
               margin="normal"
               name="staffid"
               onBlur=""
@@ -131,12 +132,13 @@ function StaffLogin({ toggler, setToggler }) {
             <Box sx={{ py: 2 }}>
               <Button
                 sx={{
-                  background: "var(--primary)",
+                  color:'black',
+                  background: "var(--secondary)",
                   padding: "15px",
                   borderRadius: "10px",
                   position: "relative",
                   ":hover": {
-                    background: "var(--primary)",
+                    background: "var(--secondary)",
                   },
                 }}
                 disabled=""
@@ -158,7 +160,7 @@ function StaffLogin({ toggler, setToggler }) {
               </Button>
             </Box>
             <Typography color="textSecondary" variant="body2">
-              Dont have an account? <Link to={"/staffsignup"}>Sign up</Link>
+              Dont have an account? <Link to={"/studentsignup"}>Sign up</Link>
             </Typography>
           </form>
         </Container>
@@ -167,4 +169,4 @@ function StaffLogin({ toggler, setToggler }) {
   );
 }
 
-export default StaffLogin;
+export default StudentLogin;

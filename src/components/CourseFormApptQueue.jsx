@@ -24,33 +24,33 @@ const generator = new AvatarGenerator();
 const products = [
   {
     id: uuid(),
-    name: "Dropbox",
+    name: "David Michael",
     imageUrl: generator.generateRandomAvatar(),
-    updatedAt: Date.now()
+    matric:"p/nd/345/450056"
   },
   {
     id: uuid(),
-    name: "Medium Corporation",
+    name: "allison peter",
     imageUrl: generator.generateRandomAvatar(),
-    updatedAt: Date.now()
+   matric:"p/hnd/19/3210077"
   },
   {
     id: uuid(),
-    name: "Slack",
+    name: "tobi sikiru",
     imageUrl: generator.generateRandomAvatar(),
-    updatedAt: Date.now()
+    matric:"p/nd/345/0089"
   },
   {
     id: uuid(),
-    name: "Lyft",
+    name: "shobola joshua",
     imageUrl:generator.generateRandomAvatar(),
-    updatedAt: Date.now()
+    matric:"p/nd/345/70056"
   },
   {
     id: uuid(),
-    name: "GitHub",
+    name: "Magret ekwe",
     imageUrl: generator.generateRandomAvatar(),
-    updatedAt: Date.now()
+    matric:"p/nd/345/80078"
   },
 ];
 
@@ -94,8 +94,9 @@ export const CourseFormAppt = ({title}) => (
           </ListItemAvatar>
           <ListItemText
             primary={product.name}
-            secondary={product.updatedAt}
+            secondary={`Matric: ${product.matric}`}
           />
+         
           <IconButton edge="end" size="small">
             <BsThreeDotsVertical />
           </IconButton>
